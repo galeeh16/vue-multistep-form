@@ -169,7 +169,7 @@
 <script setup>
 import { ref } from 'vue';
 import useVuelidate from '@vuelidate/core';
-import { required, minLength, maxLength, numeric, helpers } from '@vuelidate/validators';
+import { required, minLength, maxLength, numeric, alpha, helpers } from '@vuelidate/validators';
 
 const step = ref(1);
 const isValidate = ref(false);
@@ -183,6 +183,7 @@ const stateFormOne = ref({
 const rulesFormOne = {
     firstName: {
         required: helpers.withMessage('First name is required', required),
+        alpha: helpers.withMessage('First name only accept alphabet', alpha),
         $autoDirty: true,
     },
     lastName: {
@@ -219,7 +220,7 @@ const stateFormThree = ref({
 });
 const rulesFormThree = {
     favoriteCharacter: {
-        required: helpers.withMessage('Please choose your favorice character', required),
+        required: helpers.withMessage('Please choose your favorite character', required),
         $autoDirty: true,
     }
 }
